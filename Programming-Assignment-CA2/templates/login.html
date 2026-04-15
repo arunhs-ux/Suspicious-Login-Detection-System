@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Banking Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            text-align: center;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            margin: 100px auto;
+            width: 340px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 95%;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>🏦 Banking Login</h2>
+
+    <!-- 🔐 MESSAGE WHEN OTP REQUIRED -->
+    {% if otp_required %}
+        <p>🔐 Enter the OTP sent to your email</p>
+    {% endif %}
+
+    <form method="POST" action="/login">
+
+        <!-- 🔹 NORMAL LOGIN -->
+        {% if not otp_required %}
+            <input name="email" placeholder="Email" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+        {% endif %}
+
+        <!-- 🔹 OTP INPUT -->
+        {% if otp_required %}
+            <input type="text" name="otp" placeholder="Enter OTP" required><br>
+        {% endif %}
+
+        <!-- 🔹 ERROR MESSAGE -->
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <!-- 🔹 DYNAMIC BUTTON -->
+        <button>
+            {% if otp_required %}
+                Verify OTP
+            {% else %}
+                Login
+            {% endif %}
+        </button>
+
+    </form>
+
+    <a href="/signup">Create Account</a>
+    <a href="/admin">Admin</a>
+
+</div>
+
+</body>
+</html>

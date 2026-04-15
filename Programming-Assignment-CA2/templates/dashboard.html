@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            text-align: center;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            margin: 100px auto;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: red;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>🏦 Bank Dashboard</h2>
+    <p>Welcome, <b>{{ user }}</b></p>
+    <p>Your account is secure.</p>
+    <a href="/logout">Logout</a>
+</div>
+</body>
+</html>
